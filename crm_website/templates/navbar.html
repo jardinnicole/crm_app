@@ -25,7 +25,27 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+        
       </ul>
+
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav ms-auto float-end">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+        </li>
+      </ul>
+
+      {% else %}
+      <ul class="navbar-nav ms-auto float-end">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Log in</a>
+        </li>
+      </ul>
+
+      {% endif %}
     </div>
   </div>
 </nav>
