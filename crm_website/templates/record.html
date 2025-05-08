@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card">
+        <h5 class="card-header">Customer Record</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ customer_record.first_name }} {{ customer_record.last_name }}</h5>
+            <p class="card-text"><strong>Email:</strong> {{ customer_record.email }}</p>
+            <p class="card-text"><strong>Address:</strong> {{ customer_record.address }}</p>
+            <p class="card-text"><strong>Gender:</strong> {{ customer_record.gender }}</p>
+            <p class="card-text"><strong>Phone:</strong> {{ customer_record.phone }}</p>
+            <p class="card-text"><strong>Created At:</strong> {{ customer_record.created_at }}</p>
+            <a href="{% url 'index' %}" class="btn btn-primary">Back to Customer List</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
