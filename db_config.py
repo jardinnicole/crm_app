@@ -1,9 +1,13 @@
+import os
+from dotenv import load_dotenv
 import mysql.connector
 
+load_dotenv()
+
 db = mysql.connector.connect(
-    host = 'localhost',
-    user = 'root',
-    passwd = 'Kisha1121'
+    host=os.getenv('DB_HOST'),  # Use 127.0.0.1 not localhost
+    user=os.getenv('DB_USER'),
+    passwd=os.getenv('DB_PASSWORD')
 )
 
 # cursor object
