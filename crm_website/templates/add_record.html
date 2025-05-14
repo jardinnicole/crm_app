@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+<nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 shadow-sm">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-decoration-none text-primary">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-decoration-none text-primary">Records</a></li>
+    <li class="breadcrumb-item active text-dark fw-semibold" aria-current="page">Add Record</li>
+  </ol>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Add Record</h1>
+<br/>
+
+<form method="POST" action="{% url 'add_record' %}">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+<br/> 
+<button type="submit" class="btn btn-primary">Add Record</button>
+</form>
+
+{% endblock %}

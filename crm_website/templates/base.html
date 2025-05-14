@@ -8,6 +8,15 @@
   </head>
   <body>
     {% include 'navbar.html' %}
+
+    {% block breadcrumb %}
+      <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4 shadow-sm">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-decoration-none active text-dark fw-semibold">Home</a></li>
+        </ol>
+      </nav>
+    {% endblock %}
+
     
     <div class="container">
         <br>

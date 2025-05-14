@@ -13,6 +13,8 @@
             <p class="card-text"><strong>Phone:</strong> {{ customer_record.phone }}</p>
             <p class="card-text"><strong>Created At:</strong> {{ customer_record.created_at }}</p>
             <a href="{% url 'index' %}" class="btn btn-primary">Back to Customer List</a>
+            <a href="{% url  'edit' customer_record.id %}" class="btn btn-secondary">Edit</a>
+            <a href="{% url  'delete' customer_record.id %}" class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>
