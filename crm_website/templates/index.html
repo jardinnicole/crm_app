@@ -1,69 +1,49 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="container">
-
 {% if user.is_authenticated %}
+    <h1>Records</h1>
 
-<h1>Records</h1>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{% url 'add_record' %}" class="btn btn-primary">Add Record</a>
+    </div>
 
-<div class="d-flex justify-content-end mb-3">
-    <a href="{% url 'add_record' %}" class="btn btn-primary">Add Record</a>
-</div>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Created At</th>
-    </tr>
-  </thead>
-  <tbody>
-
-  {% if records %}
-    {% for record in records %}
-    <tr>
-      <td><a href="{% url 'record' record.id %}">{{ record.id }}</td>
-      <td>{{ record.first_name }}</td>
-      <td>{{ record.last_name }}</td>
-      <td>{{ record.email }}</td>
-      <td>{{ record.address }}</td>
-      <td>{{ record.gender }}</td>
-      <td>{{ record.phone }}</td>
-      <td>{{ record.created_at }}</td>
-    </tr>
-    {% endfor %}
-  {% endif %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if records %}
+            {% for record in records %}
+            <tr>
+                <td><a href="{% url 'record' record.id %}">{{ record.id }}</td>
+                <td>{{ record.first_name }}</td>
+                <td>{{ record.last_name }}</td>
+                <td>{{ record.email }}</td>
+                <td>{{ record.address }}</td>
+                <td>{{ record.gender }}</td>
+                <td>{{ record.phone }}</td>
+                <td>{{ record.created_at }}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
 {% else %}
-  </tbody>
-</table>
-
-    <h1>Log in</h1>
-
-    <form method="POST" action="{% url 'index' %}">
-        {% csrf_token %}
-        <br>
-        <form>
-            <div class="mb-3">
-              <input type="text" class="form-control" name="username" placeholder="Username" required>
-            </div>
-            <div class="mb-3">
-              <input type="password" class="form-control" name="password" placeholder="Password" required>
-            </div>
-            <div class="mb-3 form-check">
-            </div>
-            <button type="submit" class="btn btn-primary">Log in</button>
-          </form>
-    </form>
-</div>
-
+    <div class="text-center py-5">
+        <h1 class="display-4 mb-4">Welcome to CRM</h1>
+        <p class="lead mb-4">Please log in or register to access the system</p>
+    </div>
 {% endif %}
-
+</div>
 {% endblock %}

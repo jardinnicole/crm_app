@@ -1,0 +1,95 @@
+{% if user.is_authenticated %}
+<style>
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 56px; /* Height of navbar */
+        width: 250px;
+        height: calc(100vh - 56px); /* Subtract navbar height */
+        background: #2c3e50;
+        color: white;
+        transition: all 0.3s ease;
+        z-index: 999;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .sidebar:hover {
+        left: 0;
+    }
+
+    .sidebar-header {
+        padding: 20px;
+        background: #1a252f;
+    }
+
+    .sidebar-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-menu li {
+        padding: 0;
+    }
+
+    .sidebar-menu a {
+        display: block;
+        padding: 15px 20px;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-menu a:hover {
+        background: #34495e;
+        padding-left: 25px;
+    }
+
+    .sidebar-menu i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Adjust main content to account for sidebar */
+    .container {
+        margin-left: 20px;
+        transition: all 0.3s ease;
+        padding-top: 20px;
+    }
+
+    .sidebar:hover + .container {
+        margin-left: 270px;
+    }
+
+    /* Add a small visible part of the sidebar */
+    .sidebar::after {
+        content: '';
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 60px;
+        background: #2c3e50;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+</style>
+
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h3>CRM Menu</h3>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="{% url 'add_record' %}"><i class="fas fa-plus"></i> Add Record</a></li>
+        <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+</div>
+{% endif %}
