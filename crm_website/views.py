@@ -101,7 +101,7 @@ def edit_record(request, pk):
             form.save()
             messages.success(request, "Record updated.")
             return redirect('index')
-        return render(request, 'edit_record.html', {'form': form})
+        return render(request, 'edit_record.html', {'form': form, 'customer_record': current_record})
     else:
         messages.error(request, "You must be logged in to view this page.")
         return redirect('index')
